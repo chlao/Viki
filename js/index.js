@@ -1,3 +1,7 @@
+$(document).ready(function(){
+	$('#search__box').focus(); 
+}); 
+
 $('#search__box').on('keyup', function(){
 	var c = $(this).val(); 
 	var per_page = 5; 
@@ -5,7 +9,7 @@ $('#search__box').on('keyup', function(){
 	var app = '100266a'; 
 	var t = $.now();
 
-	if (c.length == 0){
+	if (c.length == 0 || $.trim(c) == ''){
 		$('#search__suggestions').css('display', 'none'); 
 	} else {
 
@@ -28,10 +32,10 @@ function processSuggestions(suggestions){
 	$('#search__suggestions').css('display', 'block'); 
 
 	for (var i = 0; i < suggestions.length; i++){
-		$('#search__suggestions').append('<li class="search__suggestions__item">' + 
+		$('#search__suggestions').append('<li class="suggestions__item clearfix">' + 
 											'<a class="suggestions__link" href="https://www.viki.com/' + suggestions[i].u.w + '">' +  
 										 	'<img class="suggestions__img" alt="" src="' + suggestions[i].i + '"/>' + 
-										 	'<span class="suggestions__description">' + suggestions[i].tt + '</span>' + 
+										 	'<div class="suggestions__description">' + suggestions[i].tt + '</div>' + 
 										 	'</a>' + 
 										  '</li>'); 
  	}

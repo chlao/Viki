@@ -20,7 +20,7 @@ input[type=search]{
 	background-position: 10px 0;
 }
 
-input:focus {
+input[type=search]:focus{
     outline: none;
     border: 2px solid black;
 }
@@ -43,13 +43,6 @@ input:focus {
 	background-color: white; 
 }
 
-.clearfix:after { 
-   content: " ";
-   display: block; 
-   height: 0; 
-   clear: both;
-}
-
 .suggestions__item:not(:last-child){
 	border-bottom: 1px solid gray;
 }
@@ -59,7 +52,6 @@ input:focus {
 	width: inherit;
 	height: inherit;
 	text-decoration: none;
-	color: black; 
 }
 
 .suggestions__img{
@@ -67,14 +59,21 @@ input:focus {
 	height: 70px;
 	margin-right: 25px;
 	object-fit: cover;
-	vertical-align: middle;
 	float: left;
 }
 
 .suggestions__description{
 	font-size: 24px;
+	color: #3C9CD7; 
+	line-height: 70px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	color: #3C9CD7; 
+}
+
+.clearfix:after { 
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
 }

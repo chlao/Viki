@@ -3,6 +3,7 @@
 	font-family: 'Open Sans', sans-serif;
 	background-color: #3C9CD7; 
 	margin-top: 2.5%; 
+	min-width: 300px;
 }
 
 input[type=search]{
@@ -76,4 +77,13 @@ input[type=search]:focus{
    display: block; 
    height: 0; 
    clear: both;
+}
+
+@media screen and (max-width: 1000px){
+	input[type=search]{
+		width: 90%; 
+	}
+	#search__suggestions{
+		width: 85%;
+	}
 }

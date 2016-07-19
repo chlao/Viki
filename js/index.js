@@ -1,13 +1,15 @@
-$(document).ready(function(){
-	$('#search__box').focus(); 
-}); 
-
-$('#search__box').on('search', function(){
-	var c = $(this).val(); 
+var onSearch = function(inputValue, debounce){
+	var c = inputValue;
 	var per_page = 5; 
 	var with_people = true; 
 	var app = '100266a'; 
 	var t = $.now();
+
+	var callback = loadSuggestions; 
+
+	if (debounce){
+		callback = loadSuggestionsDebounce; 
+	}
 
 	if (c.length == 0 || $.trim(c) == ''){
 		$('#search__suggestions').css('display', 'none'); 
@@ -21,12 +23,12 @@ $('#search__box').on('search', function(){
 				 '&t=' + t, 
 			dataType: 'jsonp', 
 			jsonp: "callback",
-			success: processSuggestions
+			success: callback
 		}); 
 	}
-}); 
+}
 
-var processSuggestions = debounce(function (suggestions){
+var loadSuggestions = function (suggestions){
 	var searchValue = $('#search__box').val(); 
 
 	if (searchValue.length == 0 || $.trim(searchValue) == ''){
@@ -44,9 +46,27 @@ var processSuggestions = debounce(function (suggestions){
 											  '</li>'); 
 	 	} 
 	}
-	console.log(suggestions);
-}, 400); 
+} 
 
+
+var loadSuggestionsDebounce = debounce(function (suggestions){
+	loadSuggestions(suggestions); 
+}, 300); 
+
+$(document).ready(function(){
+	$('#search__box').focus(); 
+
+	var input = document.createElement('input');
+	if (typeof input.incremental != 'undefined') {
+	    $('#search__box').on('search', function(){
+			onSearch($(this).val());
+		}); 
+	} else {
+		$('#search__box').on('keyup', function(){
+			onSearch($(this).val(), true); 
+		}); 
+	}
+}); 
 
 // Returns a function, that, as long as it continues to be invoked, will not
 // be triggered. The function will be called after it stops being called for

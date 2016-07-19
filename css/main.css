@@ -6,7 +6,7 @@
 	min-width: 300px;
 }
 
-input[type=search]{
+#search__box{
 	border-radius: 30px; 
 	border: none;
 	width: 40%;
@@ -21,7 +21,7 @@ input[type=search]{
 	background-position: 10px 0;
 }
 
-input[type=search]:focus{
+#search__box:focus{
     outline: none;
     border: 2px solid black;
 }
@@ -80,9 +80,10 @@ input[type=search]:focus{
 }
 
 @media screen and (max-width: 1000px){
-	input[type=search]{
+	#search__box{
 		width: 90%; 
 	}
+	
 	#search__suggestions{
 		width: 85%;
 	}

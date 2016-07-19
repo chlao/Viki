@@ -38,9 +38,7 @@ var processSuggestions = debounce(function (suggestions){
 										 	'<div class="suggestions__description">' + suggestions[i].tt + '</div>' + 
 										 	'</a>' + 
 										  '</li>'); 
- 	}
-	
-	console.log(suggestions); 
+ 	} 
 }, 500); 
 
 

@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url("fonts/Open_Sans/OpenSans-Regular.ttf") format("truetype");
+  font-weight: normal; 
+}
+
 #search__body{
 	text-align: center;
 	font-family: 'Open Sans', sans-serif;
@@ -83,7 +89,7 @@
 	#search__box{
 		width: 90%; 
 	}
-	
+
 	#search__suggestions{
 		width: 85%;
 	}

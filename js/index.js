@@ -28,18 +28,24 @@ $('#search__box').on('keyup', function(){
 }); 
 
 var processSuggestions = debounce(function (suggestions){
-	$('#search__suggestions').empty(); 
-	$('#search__suggestions').css('display', 'block'); 
+	var searchValue = $('#search__box').val(); 
 
-	for (var i = 0; i < suggestions.length; i++){
-		$('#search__suggestions').append('<li class="suggestions__item clearfix">' + 
-											'<a class="suggestions__link" href="https://www.viki.com/' + suggestions[i].u.w + '">' +  
-										 	'<img class="suggestions__img" alt="" src="' + suggestions[i].i + '"/>' + 
-										 	'<div class="suggestions__description">' + suggestions[i].tt + '</div>' + 
-										 	'</a>' + 
-										  '</li>'); 
- 	} 
-}, 500); 
+	if (searchValue.length == 0 || $.trim(searchValue) == ''){
+		$('#search__suggestions').css('display', 'none'); 
+	} else {
+		$('#search__suggestions').empty(); 
+		$('#search__suggestions').css('display', 'block'); 
+
+		for (var i = 0; i < suggestions.length; i++){
+			$('#search__suggestions').append('<li class="suggestions__item clearfix">' + 
+												'<a class="suggestions__link" href="https://www.viki.com/' + suggestions[i].u.w + '">' +  
+											 	'<img class="suggestions__img" alt="" src="' + suggestions[i].i + '"/>' + 
+											 	'<div class="suggestions__description">' + suggestions[i].tt + '</div>' + 
+											 	'</a>' + 
+											  '</li>'); 
+	 	} 
+	}
+}, 300); 
 
 
 // Returns a function, that, as long as it continues to be invoked, will not

@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$('#search__box').focus(); 
 }); 
 
-$('#search__box').on('keyup', function(){
+$('#search__box').on('search', function(){
 	var c = $(this).val(); 
 	var per_page = 5; 
 	var with_people = true; 
@@ -12,7 +12,6 @@ $('#search__box').on('keyup', function(){
 	if (c.length == 0 || $.trim(c) == ''){
 		$('#search__suggestions').css('display', 'none'); 
 	} else {
-
 		$.ajax({
 			url: 'https://api.viki.io/v4/search.json?' + 
 				 'c=' + c + 
@@ -45,7 +44,8 @@ var processSuggestions = debounce(function (suggestions){
 											  '</li>'); 
 	 	} 
 	}
-}, 300); 
+	console.log(suggestions);
+}, 400); 
 
 
 // Returns a function, that, as long as it continues to be invoked, will not
